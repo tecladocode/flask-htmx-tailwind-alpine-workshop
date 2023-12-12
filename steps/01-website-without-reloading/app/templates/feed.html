@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+    <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 py-4">
+      <nav class="flex flex-1 flex-col">
+        <ul role="list" class="flex flex-1 flex-col gap-y-3">
+          {% for feed_url, feed_ in feeds.items() %}
+            <li>
+              <a href="{{ url_for('render_feed', feed_url=feed_.href) }}"
+                 hx-boost
+                 class="{{ 'bg-green-700 text-white' if feed.href == feed_['href'] else '' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                {{ feed_['title'] }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="pl-72">
+    <main class="py-10">
+      {% for item in feed["entries"].values() %}
+        {{ render_partial("partials/entry.html", title=item.title, published=item.published, summary=item.summary,
+                media_content=item.media_content, author=item.author, link=item.link) }}
+      {% endfor %}
+      {# {{ render_partial("partials/entry_page.html", entries=entries) }} #}
+    </main>
+  </div>
+{% endblock content %}

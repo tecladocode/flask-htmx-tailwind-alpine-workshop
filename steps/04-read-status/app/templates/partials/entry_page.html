@@ -1,0 +1,9 @@
+{% for item in entries %}
+  {{ render_partial("partials/entry.html", title=item.title, published=item.published, summary=item.summary,
+    media_content=item.media_content, author=item.author, link=item.link, read=item.read, feed_url=href) }}
+{% endfor %}
+{% if page < max_page - 1 %}
+  <button hx-get="{{ url_for('render_feed_entries', feed_url=href, page=page+1) }}"
+          hx-swap="outerHTML"
+          hx-target="this">Load more</button>
+{% endif %}

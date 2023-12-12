@@ -1,0 +1,29 @@
+[project]
+name = "flask-htmx-tailwind"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Jose Salvatierra", email = "jslvtr@gmail.com" }
+]
+dependencies = [
+    "flask[dotenv]>=3.0.0",
+    "jinja-partials>=0.1.1",
+    "feedparser>=6.0.10",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "djlint>=1.34.0",
+    "mkdocs>=1.5.3",
+    "mkdocs-material @ git+https://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@github.com/squidfunk/mkdocs-material-insiders.git@9.5.1-insiders-4.47.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true

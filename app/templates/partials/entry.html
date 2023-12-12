@@ -1,0 +1,38 @@
+{#
+A rendered summarized entry
+- title
+- published
+- summary
+- media_content (post image)
+- author
+- link
+- read
+- feed_url
+#}
+<article class="grid grid-cols-[300px_600px] mb-4">
+    {% if media_content %}
+        <img class="aspect-video rounded-md shadow-md"
+             src="{{ media_content[0]['url'] }}" />
+    {% endif %}
+    <div class="ml-8 pt-4 {{ 'col-start-2' if media_content else 'col-start-1 col-span-2' }}"
+         x-data="{ read: {{ read | lower }} }">
+        <h2 class="font-bold text-2xl">
+            <svg x-show="!read"
+                 viewBox="0 0 16 16"
+                 xmlns="http://www.w3.org/2000/svg"
+                 class="fill-emerald-500 h-3 w-3 inline-block mb-1">
+                <circle cx="8" cy="8" r="8" />
+            </svg>
+            {{ title }}
+        </h2>
+        <p>
+            Published by <span class="font-medium">{{ author }}</span> on <span class="font-medium">{{ published
+        }}</span>
+    </p>
+    <div class="leading-6 mb-2">{{ summary }}</div>
+    <a x-on:click="$dispatch('read', {read: read}); read = true;"
+       href="{{ url_for('read_entry', feed_url=feed_url, entry_url=link) }}"
+       class="underline"
+       target="_blank">Read article</a>
+</div>
+</article>

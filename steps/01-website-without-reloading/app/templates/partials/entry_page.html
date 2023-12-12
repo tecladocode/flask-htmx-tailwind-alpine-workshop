@@ -1,0 +1,4 @@
+{% for item in entries %}
+  {{ render_partial("partials/entry.html", title=item.title, published=item.published, summary=item.summary,
+    media_content=item.media_content, author=item.author, link=item.link) }}
+{% endfor %}

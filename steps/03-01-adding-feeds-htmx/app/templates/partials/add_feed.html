@@ -1,0 +1,20 @@
+<form class="flex flex-col items-center" action="/add_feed" method="POST">
+    <div>
+        <label for="url">URL</label>
+        <input type="text" id="url" name="url" class="bg-slate-100 p-2 mb-2">
+    </div>
+    <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" class="bg-slate-100 p-2 mb-2">
+    </div>
+    <div>
+        <label for="showImages">Show Images</label>
+        <input type="checkbox"
+               id="showImages"
+               name="showImages"
+               class="bg-slate-100 p-2 mb-2">
+    </div>
+    <input type="submit"
+           value="Add"
+           class="bg-slate-600 text-white font-semibold rounded-md px-4 py-2">
+</form>
