@@ -64,4 +64,5 @@ def create_app():
         entry["read"] = True
         return redirect(entry_url)
 
+
     return app

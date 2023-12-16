@@ -16,10 +16,13 @@
           {% endfor %}
         </ul>
       </nav>
-      <div class="flex justify-center items-center">
-        <button hx-get="/render_add_feed"
-                hx-swap="outerHTML"
-                class="bg-slate-600 text-white font-semibold rounded-md px-4 py-2">Add</button>
+      <div class="flex flex-col justify-center items-center"
+           x-data="{show: false}">
+        <!-- The below doesn't need to be a partial anymore because we're never rendering it in a Flask endpoint -->
+        <div x-show="show">{{ render_partial("partials/add_feed.html") }}</div>
+        <button x-on:click="show = !show"
+                class="bg-slate-600 text-white font-semibold rounded-md px-4 py-2"
+                x-text="show ? 'Hide' : 'Show'">Show</button>
       </div>
     </div>
   </div>

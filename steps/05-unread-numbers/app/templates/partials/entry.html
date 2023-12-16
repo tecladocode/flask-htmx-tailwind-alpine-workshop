@@ -29,7 +29,7 @@ A rendered summarized entry
             Published by <span class="font-medium">{{ author }}</span> on <span class="font-medium">{{ published
         }}</span>
     </p>
-    <p class="leading-6 mb-2">{{ summary | safe }}</p>
+    <div class="leading-6 mb-2">{{ summary }}</div>
     <a x-on:click="$dispatch('read', {read: read}); read = true;"
        href="{{ url_for('read_entry', feed_url=feed_url, entry_url=link) }}"
        class="underline"

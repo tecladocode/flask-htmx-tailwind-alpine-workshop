@@ -56,11 +56,7 @@ def create_app():
         show_images = request.form.get("showImages")
         feeds[feed] = {"title": title, "href": feed, "show_images": show_images, "entries": {}}
         return redirect(url_for("render_feed", feed=feed))
-    
-    @app.route("/render_add_feed")
-    def render_add_feed():
-        return render_template("partials/add_feed.html")
-    
+
     @app.route("/feed/<path:feed_url>/entry/<path:entry_url>")
     def read_entry(feed_url: str, entry_url: str):
         feed = feeds[feed_url]
